@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'captcha',
     "phonenumber_field",
     'apps.dashboard_app',
     'apps.user_app',
@@ -83,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
-        'USER': 'postgres',
+        'USER': 'dbadmin',
         'PASSWORD': 'Mars012023',
         'HOST': 'localhost',
         'PORT': '5432',
