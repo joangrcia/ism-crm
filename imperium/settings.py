@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
-        'USER': 'dbadmin',
+        'USER': 'postgres',
         'PASSWORD': 'Mars012023',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -125,12 +125,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Untuk mengumpulkan file-file statis
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Untuk mengumpulkan file-file statis
 MEDIA_URL = '/media/'  # URL yang digunakan untuk mengakses file media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Menyimpan file-file media seperti gambar
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
