@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tailwind',
+    'theme',
     "phonenumber_field",
     'apps.dashboard_app',
     'apps.user_app',
@@ -125,14 +127,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Untuk mengumpulkan file-file statis
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Untuk mengumpulkan file-file statis
 MEDIA_URL = '/media/'  # URL yang digunakan untuk mengakses file media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Menyimpan file-file media seperti gambar
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+LOGIN_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+LOGOUT_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+NPM_BIN_PATH = 'npm.cmd'
