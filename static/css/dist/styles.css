@@ -1764,6 +1764,10 @@ video {
   gap: 1rem;
 }
 
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
@@ -4175,6 +4179,10 @@ video {
 
   .md\:mr-6 {
     margin-right: 1.5rem;
+  }
+
+  .md\:block {
+    display: block;
   }
 
   .md\:flex {
