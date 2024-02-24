@@ -1,4 +1,4 @@
-{% load static %} {% load static tailwind_tags %}
+{% load static %} {% load static tailwind_tags %} {% load i18n %}
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
@@ -6,56 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more"
-    />
+      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more" />
     <meta name="author" content="Tradervibes" />
     <meta name="generator" content="Hugo 0.121.1" />
 
-    <title>Imperium Login</title>
+    <title>Imperium {% trans "Login" %}</title>
 
     <link
       rel="canonical"
-      href="https://flowbite-admin-dashboard.vercel.app/authentication/sign-in/"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/authentication/sign-in/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     {% tailwind_css %}
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="https://flowbite-admin-dashboard.vercel.app/apple-touch-icon.png"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/apple-touch-icon.png" />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://flowbite-admin-dashboard.vercel.app/favicon-32x32.png"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/favicon-32x32.png" />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://flowbite-admin-dashboard.vercel.app/favicon-16x16.png"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/favicon-16x16.png" />
     <link
       rel="icon"
       type="image/png"
-      href="https://flowbite-admin-dashboard.vercel.app/favicon.ico"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/favicon.ico" />
     <link
       rel="manifest"
-      href="https://flowbite-admin-dashboard.vercel.app/site.webmanifest"
-    />
+      href="https://flowbite-admin-dashboard.vercel.app/site.webmanifest" />
     <link
       rel="mask-icon"
       href="https://flowbite-admin-dashboard.vercel.app/safari-pinned-tab.svg"
-      color="#5bbad5"
-    />
+      color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
     <!-- Twitter -->
@@ -65,28 +56,23 @@
     <meta name="twitter:title" content="Imperium Login" />
     <meta
       name="twitter:description"
-      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more"
-    />
+      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more" />
     <meta
       name="twitter:image"
-      content="https://flowbite-admin-dashboard.vercel.app/images/og-image.png"
-    />
+      content="https://flowbite-admin-dashboard.vercel.app/images/og-image.png" />
 
     <!-- Facebook -->
     <meta
       property="og:url"
-      content="https://flowbite-admin-dashboard.vercel.app/authentication/sign-in/"
-    />
+      content="https://flowbite-admin-dashboard.vercel.app/authentication/sign-in/" />
     <meta property="og:title" content="Imperium Login" />
     <meta
       property="og:description"
-      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Imperium featuring charts, widgets, CRUD layouts, authentication pages, and more"
-    />
+      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Imperium featuring charts, widgets, CRUD layouts, authentication pages, and more" />
     <meta property="og:type" content="article" />
     <meta
       property="og:image"
-      content="https://flowbite-admin-dashboard.vercel.app/images/og-image.png"
-    />
+      content="https://flowbite-admin-dashboard.vercel.app/images/og-image.png" />
     <meta property="og:image:type" content="image/png" />
 
     <script>
@@ -104,25 +90,21 @@
   <body class="bg-gray-50 dark:bg-gray-800">
     <main class="bg-gray-50 dark:bg-gray-900">
       <div
-        class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900"
-      >
+        class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
         <a
           href=""
-          class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white"
-        >
+          class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white">
           <img
             src="https://flowbite-admin-dashboard.vercel.app/images/logo.svg"
             class="mr-4 h-11"
-            alt="Imperium Logo"
-          />
+            alt="Imperium Logo" />
           <span>Imperium</span>
         </a>
         <!-- Card -->
         <div
-          class="w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800"
-        >
+          class="w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Sign in to platform
+            {% trans "Sign in to platform" %}
           </h2>
           <form class="mt-8 space-y-6" action="#" method="POST">
             {% csrf_token %}
@@ -138,8 +120,7 @@
                 id="username"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="name@company.com"
-                required
-              />
+                required />
             </div>
             <div>
               <label
@@ -153,8 +134,7 @@
                 id="password"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                required
-              />
+                required />
             </div>
             <button
               type="submit"

@@ -1,4 +1,4 @@
-{% load static %} {% load static tailwind_tags %}
+{% load static %} {% load static tailwind_tags %} {% load i18n %}
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
@@ -536,7 +536,7 @@
                       <path
                         d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
-                    <span class="ml-3" sidebar-toggle-item>Dashboard</span>
+                    <span class="ml-3" sidebar-toggle-item>{% trans "Dashboard" %}</span>
                   </a>
                 </li>
                 <li>
@@ -551,7 +551,7 @@
                     <path
                       d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
                   </svg>
-                    <span class="ml-3" sidebar-toggle-item>Member</span>
+                    <span class="ml-3" sidebar-toggle-item>{% trans "Member" %}</span>
                   </a>
                 </li>
                 <li>
@@ -566,7 +566,7 @@
                     <span
                       class="flex-1 ml-3 text-left whitespace-nowrap"
                       sidebar-toggle-item
-                      >Partner</span
+                      >{% trans "Partner" %}</span
                     >
                     <svg
                       sidebar-toggle-item
@@ -585,28 +585,28 @@
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/layouts/stacked/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >All</a
+                        >{% trans "All" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/layouts/sidebar/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Wallet</a
+                        >{% trans "Wallet" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/layouts/sidebar/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Verification</a
+                        >{% trans "Verification" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/layouts/sidebar/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Request</a
+                        >{% trans "Request" %}</a
                       >
                     </li>
                   </ul>
@@ -624,7 +624,7 @@
                     <span
                       class="flex-1 ml-3 text-left whitespace-nowrap"
                       sidebar-toggle-item
-                      >Transaction</span
+                      >{% trans "Transaction" %}</span
                     >
                     <svg
                       sidebar-toggle-item
@@ -643,21 +643,21 @@
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/crud/products/"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Deposit</a
+                        >{% trans "Deposit" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/crud/users/"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Withdrawal</a
+                        >{% trans "Withdrawal" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/crud/users/"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Internal Transfer</a
+                        >{% trans "Internal Transfer" %}</a
                       >
                     </li>
                   </ul>
@@ -669,7 +669,7 @@
                     <svg class="text-gray-500 group-hover:text-gray-900 w-6 h-6 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17 6h-2V5h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2h-.5a6 6 0 0 1 1.5 4v4a1 1 0 1 1-2 0v-4a4 4 0 0 0-4-4h-.5C5 6 3 8 3 10.5V16c0 .6.4 1 1 1h7v3c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-3h5c.6 0 1-.4 1-1v-6a4 4 0 0 0-4-4Zm-9 8.5H7a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Z"/>
                     </svg>  
-                    <span class="ml-3" sidebar-toggle-item>Send Mail</span>
+                    <span class="ml-3" sidebar-toggle-item>{% trans "Send Mail" %}</span>
                   </a>
                 </li>
                 <li>
@@ -691,7 +691,7 @@
                     <span
                       class="flex-1 ml-3 text-left whitespace-nowrap"
                       sidebar-toggle-item
-                      >Match Account</span
+                      >{% trans "Match Account" %}</span
                     >
                     <svg
                       sidebar-toggle-item
@@ -756,7 +756,7 @@
                     <span
                       class="flex-1 ml-3 text-left whitespace-nowrap"
                       sidebar-toggle-item
-                      >Social Trading</span
+                      >{% trans "Social Trading" %}</span
                     >
                     <svg
                       sidebar-toggle-item
@@ -775,35 +775,35 @@
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/authentication/sign-in/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Money Managers</a
+                        >{% trans "Money Managers" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/authentication/sign-up/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Subscriptions</a
+                        >{% trans "Subscriptions" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/authentication/forgot-password/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Fee</a
+                        >{% trans "Fee" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/authentication/reset-password/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Global Master Fee</a
+                        >{% trans "Global Master Fee" %}</a
                       >
                     </li>
                     <li>
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/authentication/profile-lock/"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Configuration</a
+                        >{% trans "Configuration" %}</a
                       >
                     </li>
                   </ul>
@@ -828,7 +828,7 @@
                     <span
                       class="flex-1 ml-3 text-left whitespace-nowrap"
                       sidebar-toggle-item
-                      >Notice</span
+                      >{% trans "Notice" %}</span
                     >
                     <svg
                       sidebar-toggle-item
@@ -847,7 +847,7 @@
                       <a
                         href="https://flowbite-admin-dashboard.vercel.app/playground/stacked/"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
-                        >Stacked</a
+                        >trans</a
                       >
                     </li>
                     <li>

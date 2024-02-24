@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,7 +87,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'dbadmin',
         'PASSWORD': 'Mars012023',
-        'HOST': 'localhost',
+        'HOST': '128.199.127.203',
         'PORT': '5432',
     }
 }
@@ -113,8 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -148,3 +147,20 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH = 'npm.cmd'
+
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('id', _('Indonesia')),
+    ('de', _('German')),
+    ('it', _('Italian')),
+    ('ja', _('Japanese')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
