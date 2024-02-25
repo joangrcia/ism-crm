@@ -1,5 +1,12 @@
 {% extends "base.html" %}{% load static %} {% load static tailwind_tags %}
-<!-- -->
+
+<!-- css -->
+{% block css %}{% endblock css %}
+
+<!-- js_head -->
+{% block js_head %}{% endblock js_head %}
+
+<!-- content -->
 {% block content %}
 <div class="px-4 pt-6">
   <div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
@@ -3115,3 +3122,6 @@
   </div>
 </div>
 {% endblock content %}
+
+<!-- javascript -->
+{% block javascript %}{% endblock javascript %}

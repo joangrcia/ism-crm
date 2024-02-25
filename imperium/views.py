@@ -29,6 +29,9 @@ def index(request):
             messages.info(request, "Username or password incorrect.")
             return redirect('login')
         
+def send_email(request):
+    return render(request, 'send_email.html')
+        
 # Fungsi penanganan 404
 def handler404(request, exception):
     return render(request, '404.html', status=404)

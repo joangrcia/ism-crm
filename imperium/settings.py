@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'apps.dashboard_app',
     'apps.user_app',
     'apps.trading_account_app',
+    'apps.partner_app',
+    'apps.match_account_app',
+    'apps.social_trading_app',
+    'apps.transaction_app',
+    'apps.notice_app',
 ]
 
 MIDDLEWARE = [
