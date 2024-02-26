@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-24 23:03+0700\n"
+"POT-Creation-Date: 2024-02-26 10:09+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1225,114 +1225,167 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#: .\imperium\settings.py:156
+#: .\imperium\settings.py:161
 msgid "English"
 msgstr ""
 
-#: .\imperium\settings.py:157
+#: .\imperium\settings.py:162
 msgid "French"
 msgstr ""
 
-#: .\imperium\settings.py:158
+#: .\imperium\settings.py:163
 msgid "Indonesia"
 msgstr ""
 
-#: .\imperium\settings.py:159
+#: .\imperium\settings.py:164
 msgid "German"
 msgstr ""
 
-#: .\imperium\settings.py:160
+#: .\imperium\settings.py:165
 msgid "Italian"
 msgstr ""
 
-#: .\imperium\settings.py:161
+#: .\imperium\settings.py:166
 msgid "Japanese"
 msgstr ""
 
-#: .\templates\base.html:540
+#: .\templates\base.html:144 .\templates\base.html:164
+#: .\templates\base.html:173 .\templates\base.html:491
+msgid "Search"
+msgstr "Suche"
+
+#: .\templates\base.html:191
+msgid "View notifications"
+msgstr "Benachrichtigungen anzeigen"
+
+#: .\templates\base.html:451
+msgid "Toggle dark mode"
+msgstr "Dunklen Modus umschalten"
+
+#: .\templates\base.html:471
+msgid "Logout"
+msgstr "Abmelden"
+
+#: .\templates\base.html:528
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
-#: .\templates\base.html:555
+#: .\templates\base.html:543
 msgid "Member"
-msgstr ""
+msgstr "Mitglied"
 
-#: .\templates\base.html:570
+#: .\templates\base.html:558
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
-#: .\templates\base.html:589
+#: .\templates\base.html:577
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
-#: .\templates\base.html:596
+#: .\templates\base.html:584
 msgid "Wallet"
-msgstr ""
+msgstr "Geldbörse"
 
-#: .\templates\base.html:603
+#: .\templates\base.html:591
 msgid "Verification"
-msgstr ""
+msgstr "Verifizierung"
 
-#: .\templates\base.html:610
+#: .\templates\base.html:598
 msgid "Request"
-msgstr ""
+msgstr "Anfrage"
 
-#: .\templates\base.html:628
+#: .\templates\base.html:616
 msgid "Transaction"
-msgstr ""
+msgstr "Transaktion"
 
-#: .\templates\base.html:647
+#: .\templates\base.html:635
 msgid "Deposit"
-msgstr ""
+msgstr "Einzahlung"
 
-#: .\templates\base.html:654
+#: .\templates\base.html:642
 msgid "Withdrawal"
-msgstr ""
+msgstr "Auszahlung"
+
+#: .\templates\base.html:649
+msgid "Internal Transfer"
+msgstr "Interne Überweisung"
 
 #: .\templates\base.html:661
-msgid "Internal Transfer"
-msgstr ""
-
-#: .\templates\base.html:673
 msgid "Send Mail"
-msgstr ""
+msgstr "E-Mail senden"
 
-#: .\templates\base.html:695
+#: .\templates\base.html:683
 msgid "Match Account"
-msgstr ""
+msgstr "Konto abgleichen"
+
+#: .\templates\base.html:702
+msgid "Account"
+msgstr "Konto"
+
+#: .\templates\base.html:727
+msgid "Social Trading"
+msgstr "Sozialer Handel"
+
+#: .\templates\base.html:746
+msgid "Money Managers"
+msgstr "Geldmanager"
+
+#: .\templates\base.html:753
+msgid "Subscriptions"
+msgstr "Abonnements"
 
 #: .\templates\base.html:760
-msgid "Social Trading"
-msgstr ""
-
-#: .\templates\base.html:779
-msgid "Money Managers"
-msgstr ""
-
-#: .\templates\base.html:786
-msgid "Subscriptions"
-msgstr ""
-
-#: .\templates\base.html:793
 msgid "Fee"
-msgstr ""
+msgstr "Gebühr"
 
-#: .\templates\base.html:800
+#: .\templates\base.html:767
 msgid "Global Master Fee"
-msgstr ""
+msgstr "Globale Mastergebühr"
 
-#: .\templates\base.html:807
+#: .\templates\base.html:774
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
-#: .\templates\base.html:832
+#: .\templates\base.html:794
 msgid "Notice"
-msgstr ""
+msgstr "Hinweis"
+
+#: .\templates\base.html:830
+msgid "Support"
+msgstr "Unterstützung"
+
+#: .\templates\base.html:869
+msgid "Settings page"
+msgstr "Einstellungsseite"
+
+#: .\templates\base.html:1056
+msgid "Terms and conditions"
+msgstr "Geschäftsbedingungen"
+
+#: .\templates\base.html:1063
+msgid "Privacy Policy"
+msgstr "Datenschutzbestimmungen"
+
+#: .\templates\base.html:1070
+msgid "Licensing"
+msgstr "Lizenzierung"
+
+#: .\templates\base.html:1077
+msgid "Cookie Policy"
+msgstr "Cookie-Richtlinie"
+
+#: .\templates\base.html:1084
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\templates\base.html:1166
+msgid "All rights reserved."
+msgstr "Alle Rechte vorbehalten."
 
 #: .\templates\index.html:13
 msgid "Login"
-msgstr ""
+msgstr "Anmelden"
 
-#: .\templates\index.html:107
+#: .\templates\index.html:105
 msgid "Sign in to platform"
-msgstr ""
+msgstr "Anmelden auf der Plattform"

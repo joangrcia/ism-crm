@@ -90,9 +90,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
-        'USER': 'dbadmin',
+        'USER': 'postgres',
         'PASSWORD': 'Mars012023',
-        'HOST': '128.199.127.203',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

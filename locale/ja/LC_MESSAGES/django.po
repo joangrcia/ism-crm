@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-24 23:03+0700\n"
+"POT-Creation-Date: 2024-02-26 10:09+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1225,114 +1225,167 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#: .\imperium\settings.py:156
+#: .\imperium\settings.py:161
 msgid "English"
 msgstr ""
 
-#: .\imperium\settings.py:157
+#: .\imperium\settings.py:162
 msgid "French"
 msgstr ""
 
-#: .\imperium\settings.py:158
+#: .\imperium\settings.py:163
 msgid "Indonesia"
 msgstr ""
 
-#: .\imperium\settings.py:159
+#: .\imperium\settings.py:164
 msgid "German"
 msgstr ""
 
-#: .\imperium\settings.py:160
+#: .\imperium\settings.py:165
 msgid "Italian"
 msgstr ""
 
-#: .\imperium\settings.py:161
+#: .\imperium\settings.py:166
 msgid "Japanese"
 msgstr ""
 
-#: .\templates\base.html:540
+#: .\templates\base.html:144 .\templates\base.html:164
+#: .\templates\base.html:173 .\templates\base.html:491
+msgid "Search"
+msgstr "検索"
+
+#: .\templates\base.html:191
+msgid "View notifications"
+msgstr "通知を表示"
+
+#: .\templates\base.html:451
+msgid "Toggle dark mode"
+msgstr "ダークモードを切り替える"
+
+#: .\templates\base.html:471
+msgid "Logout"
+msgstr "ログアウト"
+
+#: .\templates\base.html:528
 msgid "Dashboard"
-msgstr ""
+msgstr "ダッシュボード"
 
-#: .\templates\base.html:555
+#: .\templates\base.html:543
 msgid "Member"
-msgstr ""
+msgstr "メンバー"
 
-#: .\templates\base.html:570
+#: .\templates\base.html:558
 msgid "Partner"
-msgstr ""
+msgstr "パートナー"
 
-#: .\templates\base.html:589
+#: .\templates\base.html:577
 msgid "All"
-msgstr ""
+msgstr "すべて"
 
-#: .\templates\base.html:596
+#: .\templates\base.html:584
 msgid "Wallet"
-msgstr ""
+msgstr "ウォレット"
 
-#: .\templates\base.html:603
+#: .\templates\base.html:591
 msgid "Verification"
-msgstr ""
+msgstr "検証"
 
-#: .\templates\base.html:610
+#: .\templates\base.html:598
 msgid "Request"
-msgstr ""
+msgstr "リクエスト"
 
-#: .\templates\base.html:628
+#: .\templates\base.html:616
 msgid "Transaction"
-msgstr ""
+msgstr "取引"
 
-#: .\templates\base.html:647
+#: .\templates\base.html:635
 msgid "Deposit"
-msgstr ""
+msgstr "預金"
 
-#: .\templates\base.html:654
+#: .\templates\base.html:642
 msgid "Withdrawal"
-msgstr ""
+msgstr "引き出し"
+
+#: .\templates\base.html:649
+msgid "Internal Transfer"
+msgstr "内部送金"
 
 #: .\templates\base.html:661
-msgid "Internal Transfer"
-msgstr ""
-
-#: .\templates\base.html:673
 msgid "Send Mail"
-msgstr ""
+msgstr "メールを送信"
 
-#: .\templates\base.html:695
+#: .\templates\base.html:683
 msgid "Match Account"
-msgstr ""
+msgstr "アカウントを一致させる"
+
+#: .\templates\base.html:702
+msgid "Account"
+msgstr "アカウント"
+
+#: .\templates\base.html:727
+msgid "Social Trading"
+msgstr "ソーシャルトレーディング"
+
+#: .\templates\base.html:746
+msgid "Money Managers"
+msgstr "資金マネージャー"
+
+#: .\templates\base.html:753
+msgid "Subscriptions"
+msgstr "サブスクリプション"
 
 #: .\templates\base.html:760
-msgid "Social Trading"
-msgstr ""
-
-#: .\templates\base.html:779
-msgid "Money Managers"
-msgstr ""
-
-#: .\templates\base.html:786
-msgid "Subscriptions"
-msgstr ""
-
-#: .\templates\base.html:793
 msgid "Fee"
-msgstr ""
+msgstr "手数料"
 
-#: .\templates\base.html:800
+#: .\templates\base.html:767
 msgid "Global Master Fee"
-msgstr ""
+msgstr "グローバルマスター手数料"
 
-#: .\templates\base.html:807
+#: .\templates\base.html:774
 msgid "Configuration"
-msgstr ""
+msgstr "設定"
 
-#: .\templates\base.html:832
+#: .\templates\base.html:794
 msgid "Notice"
-msgstr ""
+msgstr "お知らせ"
+
+#: .\templates\base.html:830
+msgid "Support"
+msgstr "サポート"
+
+#: .\templates\base.html:869
+msgid "Settings page"
+msgstr "設定ページ"
+
+#: .\templates\base.html:1056
+msgid "Terms and conditions"
+msgstr "利用規約"
+
+#: .\templates\base.html:1063
+msgid "Privacy Policy"
+msgstr "プライバシーポリシー"
+
+#: .\templates\base.html:1070
+msgid "Licensing"
+msgstr "ライセンス"
+
+#: .\templates\base.html:1077
+msgid "Cookie Policy"
+msgstr "クッキーポリシー"
+
+#: .\templates\base.html:1084
+msgid "Contact"
+msgstr "お問い合わせ"
+
+#: .\templates\base.html:1166
+msgid "All rights reserved."
+msgstr "全著作権所有."
 
 #: .\templates\index.html:13
 msgid "Login"
-msgstr ""
+msgstr "ログイン"
 
-#: .\templates\index.html:107
+#: .\templates\index.html:105
 msgid "Sign in to platform"
-msgstr ""
+msgstr "プラットフォームにサインイン"
