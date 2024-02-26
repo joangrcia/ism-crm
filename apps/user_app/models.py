@@ -40,5 +40,5 @@ class BankDetail(models.Model):
     account_name = models.CharField(max_length=100)
     bank_account = models.BigIntegerField()
     bank_address = models.CharField(max_length=100)
-    swift_code = models.BigIntegerField(blank=True)
+    swift_code = models.BigIntegerField(blank=True, default=0)
     bank_name = models.CharField(max_length=100)

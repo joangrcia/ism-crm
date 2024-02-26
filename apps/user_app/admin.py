@@ -7,5 +7,6 @@ class BankDetailInline(admin.TabularInline):
 
 class PersonalDetailAdmin(admin.ModelAdmin):
     inlines = [BankDetailInline]
+    list_display = ('email', 'first_name', 'last_name', 'phone', 'id_type', 'id_number', 'marital_status', 'country', 'state', 'city', 'postal', 'address')
 
 admin.site.register(PersonalDetail, PersonalDetailAdmin)
