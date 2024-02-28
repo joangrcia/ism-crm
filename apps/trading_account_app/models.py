@@ -9,3 +9,6 @@ class TradingAccount(models.Model):
     client_group = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.account_number)

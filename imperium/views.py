@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from django.utils.translation import get_language, activate, gettext
+
 
 def index(request):
 
@@ -27,7 +27,7 @@ def index(request):
             return redirect('dashboard:index')
         else:
             messages.info(request, "Username or password incorrect.")
-            return redirect('login')
+            return redirect('two_factor:login')
         
 def send_email(request):
     return render(request, 'send_email.html')

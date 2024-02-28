@@ -49,6 +49,11 @@ INSTALLED_APPS = [
     'apps.social_trading_app',
     'apps.transaction_app',
     'apps.notice_app',
+    # 2fa
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'two_factor',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -143,9 +149,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
-LOGIN_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
-LOGOUT_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+# LOGIN_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+# LOGIN_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
+# LOGOUT_REDIRECT_URL = 'login'  # Ganti dengan URL halaman login kustom Anda
 
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
@@ -169,3 +175,7 @@ LANGUAGES = (
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
+
+LOGIN_URL = 'two_factor:login'
+
+LOGIN_REDIRECT_URL = 'dashboard:index'

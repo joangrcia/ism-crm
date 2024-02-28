@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
+from two_factor.urls import urlpatterns as tf_urls
 
 from . import views
 
@@ -15,4 +16,5 @@ urlpatterns = i18n_patterns (
     path('transaction/', include('apps.transaction_app.urls')),
     path('social-trading/', include('apps.social_trading_app.urls')),
     path('notice/', include('apps.notice_app.urls')),
+    path('', include(tf_urls)),
 )
