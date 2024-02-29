@@ -6,7 +6,6 @@ username = "tsadm330@gmail.com"
 password = "Ya2t 159753"
 partnerId = 115
 
-# Mendapatkan access token
 token_url = f"https://{websiteURL}/proxy/auth/oauth/token"
 token_headers = {
     "Authorization": "Basic bGl2ZU10cjFDbGllbnQ6TU9USUI2ckRxbjNDenlNdDV2N2VHVmNhcWZqeDNlNWN1ZmlObG5uVFZHWVkzak5uRDJiWXJQS0JPTGRKMXVCRHpPWURTa1NVa1BObkxJdHd5bXRMZzlDUklLTmdIVW54MVlmdQ==",
@@ -24,10 +23,8 @@ token_response = requests.post(token_url, headers=token_headers, cookies=token_c
 token_response_data = json.loads(token_response.text)
 accessToken = token_response_data['access_token']
 
-# Mengatur nomor halaman yang ingin diambil
-page_number = 5  # Ganti nomor halaman sesuai kebutuhan Anda
+page_number = 5
 
-# Membuat permintaan untuk halaman yang ditentukan
 url = f'https://mtco.match-trade.com/documentation/account/api/partner/{partnerId}/clients/view'
 headers = {
     'Authorization': f'Bearer {accessToken}',
@@ -37,7 +34,7 @@ params = {
     'from': '2020-01-01T00:00:00Z',
     'to': '2024-01-01T00:00:00Z'
 }
-# Menambahkan nomor halaman ke dalam parameter permintaan
+
 params['page'] = page_number  
 
 response = requests.get(url, headers=headers, params=params)

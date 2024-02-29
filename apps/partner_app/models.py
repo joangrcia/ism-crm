@@ -5,12 +5,16 @@ from apps.trading_account_app.models import TradingAccount
 
 class IbAccount(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default="")
     account_number = models.OneToOneField(TradingAccount,on_delete=models.CASCADE)
     is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.name)
 
 class IbList(models.Model):
-    ib = models.OneToOneField(IbAccount, on_delete=models.CASCADE)
+    ib = models.ForeignKey(IbAccount, on_delete=models.CASCADE)
     client_account = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.ib)

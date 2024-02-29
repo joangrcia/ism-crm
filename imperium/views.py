@@ -4,6 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.utils.translation import gettext as _
 
+def get_breadcrumb(path):
+    parts = path.strip('/').split('/')
+    breadcrumbs = [{'title': part.capitalize(), 'url': '/'.join(parts[:i+1])} for i, part in enumerate(parts)]
+    return breadcrumbs
 
 def index(request):
 

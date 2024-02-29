@@ -31,6 +31,7 @@ class PersonalDetail(models.Model):
     city = models.CharField(max_length=100)
     postal = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
+    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username
@@ -42,3 +43,7 @@ class BankDetail(models.Model):
     bank_address = models.CharField(max_length=100)
     swift_code = models.BigIntegerField(blank=True, default=0)
     bank_name = models.CharField(max_length=100)
+
+class Wallet(models.Model):
+    user = models.OneToOneField(PersonalDetail, on_delete=models.CASCADE)
+    wallet = models.BigIntegerField()

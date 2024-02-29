@@ -16,36 +16,31 @@
 
 <!-- content -->
 {% block content %}
-<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 h-[65vh]">
+<div class="px-4 pt-6">
+  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 h-[65vh]">
     <div class="mx-auto h-full overflow-x-auto shadow-md sm:rounded-lg ">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative overflow-hidden p-5">
             <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col" class="px-6 py-3">Email</th>
-                        <th scope="col" class="px-6 py-3">Name</th>
-                        <th scope="col" class="px-6 py-3">Surname</th>
                         <th scope="col" class="px-6 py-3">Created</th>
-                        <th scope="col" class="px-6 py-3">Status</th>
-                        <th scope="col" class="px-6 py-3">IB</th>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                        <th scope="col" class="px-6 py-3">Username</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">City</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for user in page_obj %}
+                    {% for user in verification %}
                     <tr>
-                        <td class=""><a href="" class="text-blue-500 hover:underline">{{ user.email }}</a></td>
-                        <td>{{ user.first_name }}</td>
-                        <td>{{ user.last_name }}</td>
-                        <td>{{ user.date_joined }}</td>
-                        <td>
-                            {% if user.personaldetail %}
-                                  Verified
-                              {% else %}
-                                  Not Verified
-                              {% endif %}
-                        </td>
-                        <td>{{ user.iblist.ib.name }}</td>
+                        <td class=""><a href="" class="text-blue-500 hover:underline">{{ user.last_updated }}</a></td>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.user.username }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.city }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -53,6 +48,7 @@
         </div>
     </div>
   </section>
+</div>
 {% endblock content %}
 
 <!-- javascript -->
