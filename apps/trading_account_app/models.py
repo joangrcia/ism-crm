@@ -15,7 +15,7 @@ class TradingAccount(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     account_number = models.BigIntegerField(default=0)
     account_deposit = models.BigIntegerField(default=0)
-    client_group = models.OneToOneField(TradingProduct, on_delete=models.CASCADE)
+    client_group = models.OneToOneField(TradingProduct, on_delete=models.CASCADE, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(auto_now=True)
 
