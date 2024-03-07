@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+
+
 class PersonalDetail(models.Model):
 
     ID_CHOICES = [
@@ -35,7 +37,8 @@ class PersonalDetail(models.Model):
 
     def __str__(self):
         return self.user.username
-    
+
+
 class BankDetail(models.Model):
     user = models.OneToOneField(PersonalDetail, on_delete=models.CASCADE)
     account_name = models.CharField(max_length=100)
@@ -43,6 +46,7 @@ class BankDetail(models.Model):
     bank_address = models.CharField(max_length=100)
     swift_code = models.BigIntegerField(blank=True, default=0)
     bank_name = models.CharField(max_length=100)
+
 
 class Wallet(models.Model):
     user = models.OneToOneField(PersonalDetail, on_delete=models.CASCADE)

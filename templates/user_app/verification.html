@@ -2,52 +2,62 @@
 
 <!-- css -->
 {% block css %}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.tailwindcss.css">
+<link rel="stylesheet" type="text/css" href="{% static "css/vendor/datatable/dataTables.tailwindcss.css" %}">
 {% endblock css %}
 
 <!-- js_head -->
 {% block js_head %}
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdn.tailwindcss.com/"></script>
-<script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.1/js/dataTables.tailwindcss.js"></script>
+<script src="{% static "js/vendor/datatable/jquery-3.7.1.js" %}"></script>
+<script src="{% static "js/vendor/datatable/dataTables.js" %}"></script>
+<script src="{% static "js/vendor/datatable/dataTables.tailwindcss.js" %}"></script>
 <script src="https://cdn.tailwindcss.com/"></script>
 {% endblock js_head %}
 
 <!-- content -->
 {% block content %}
-<div class="px-4 pt-6">
-  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 h-[65vh]">
-    <div class="mx-auto h-full overflow-x-auto shadow-md sm:rounded-lg ">
-        <!-- Start coding here -->
-        <div class="bg-white dark:bg-gray-800 relative overflow-hidden p-5">
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th scope="col" class="px-6 py-3">Created</th>
-                        <th scope="col" class="px-6 py-3">Name</th>
-                        <th scope="col" class="px-6 py-3">Email</th>
-                        <th scope="col" class="px-6 py-3">Username</th>
-                        <th scope="col" class="px-6 py-3">Phone</th>
-                        <th scope="col" class="px-6 py-3">City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user in verification %}
-                    <tr>
-                        <td class=""><a href="" class="text-blue-500 hover:underline">{{ user.last_updated }}</a></td>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.user.username }}</td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.city }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+<div class="pt-4 pr-4 pl-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:pt-6 sm:pr-6 sm:pl-6 sm:pb-2 dark:bg-gray-800">
+    <!-- Card header -->
+    <div class="items-center justify-between lg:flex">
+      <div class="mb-4 lg:mb-0">
+        <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+          Verification Member
+        </h3>
+        <span class="text-base font-normal text-gray-500 dark:text-gray-400">
+          This is a list of account member need verification
+        </span>
+      </div>
     </div>
-  </section>
+    <div class="flex flex-col mt-6">
+      <div class="overflow-x-auto rounded-lg">
+        <div class="inline-block min-w-full align-middle">
+          <div class="overflow-hidden shadow sm:rounded-lg">            
+              <table id="tableVerification" class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+                    <thead>
+                        <tr>
+                            <th>Created</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in verification %}
+                        <tr>
+                            <td>{{ user.last_updated }}</td>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.user.username }}</td>
+                            <td>{{ user.phone }}</td>
+                            <td>{{ user.city }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
 </div>
 {% endblock content %}
 
@@ -55,7 +65,7 @@
 {% block javascripts %}
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#tableVerification').DataTable();
     });
 </script>
 {% endblock javascripts %}

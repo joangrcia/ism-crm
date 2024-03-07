@@ -5,16 +5,18 @@ from two_factor.urls import urlpatterns as tf_urls
 
 from . import views
 
-urlpatterns = i18n_patterns (
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls, name='adminpage'),
     path('', views.index, name='login'),
     path('send_email', views.send_email, name='send_email'),
     path('dashboard/', include('apps.dashboard_app.urls')),
     path('member/', include('apps.user_app.urls')),
     path('partner/', include('apps.partner_app.urls')),
-    path('match-account/', include('apps.match_account_app.urls')),
     path('transaction/', include('apps.transaction_app.urls')),
     path('social-trading/', include('apps.social_trading_app.urls')),
     path('notice/', include('apps.notice_app.urls')),
+    path('trading/', include('apps.trading_account_app.urls')),
+    path('product/', include('apps.product_app.urls')),
+    path('api/all-users/', views.all_users, name='all_users'),
     path('', include(tf_urls)),
 )

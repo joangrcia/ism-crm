@@ -13,6 +13,7 @@ def get_breadcrumb(path):
 # Create your views here.
 @login_required
 def index(request):
+    """
     users = User.objects.all()
     ib_list = IbAccount.objects.all()
 
@@ -20,14 +21,17 @@ def index(request):
         'page_obj': users,
         'ib_list' : ib_list,
     }
-    return render(request, 'user_app/index.html', context)
+    """
+    return render(request, 'user_app/index.html')
 
 @login_required
 def verification(request):
+    """
     verification = PersonalDetail.objects.all()
     ib_list = IbAccount.objects.all()
     context = {
         'verification' : verification,
         'ib_list':ib_list,
     }
-    return render(request, 'user_app/verification.html', context)
+    """
+    return render(request, 'user_app/verification.html')
