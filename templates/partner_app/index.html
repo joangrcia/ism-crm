@@ -2,21 +2,27 @@
 
 <!-- css -->
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static "css/vendor/datatable/dataTables.tailwindcss.css" %}">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/2.0.2/css/dataTables.tailwindcss.css"
+/>
 {% endblock css %}
 
 <!-- js_head -->
 {% block js_head %}
-<script src="{% static "js/vendor/datatable/jquery-3.7.1.js" %}"></script>
-<script src="{% static "js/vendor/datatable/dataTables.js" %}"></script>
-<script src="{% static "js/vendor/datatable/dataTables.tailwindcss.js" %}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.tailwindcss.com/"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.tailwindcss.js"></script>
 <script src="https://cdn.tailwindcss.com/"></script>
 {% endblock js_head %}
 
 <!-- content -->
 {% block content %}
 <div
-  class="pt-4 pr-4 pl-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:pt-6 sm:pr-6 sm:pl-6 sm:pb-2 dark:bg-gray-800">
+  class="pt-4 pr-4 pl-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:pt-6 sm:pr-6 sm:pl-6 sm:pb-2 dark:bg-gray-800"
+>
   <!-- Card header -->
   <div class="items-center justify-between lg:flex">
     <div class="mb-4 lg:mb-0">
@@ -27,33 +33,68 @@
         This is a list of all partner
       </span>
     </div>
-    <div class="items-center sm:flex">            
+    <div class="items-center sm:flex">
       <div class="flex items-center">
-        <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
+        <button
+          id="dropdownDefault"
+          data-dropdown-toggle="dropdown"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          type="button"
+        >
           Actions
-          <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            class="w-4 h-4 ml-2"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M19 9l-7 7-7-7"></path>
+              d="M19 9l-7 7-7-7"
+            ></path>
           </svg>
         </button>
         <!-- Dropdown menu -->
-        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown">
+        <div
+          id="dropdown"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+        >
+          <ul
+            class="py-1 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdown"
+          >
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Excel</a>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Excel</a
+              >
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">CSV</a>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >CSV</a
+              >
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Excel</a>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Excel</a
+              >
             </li>
           </ul>
           <div class="py-1">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Add New</a>
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Add New</a
+            >
           </div>
         </div>
       </div>
@@ -64,37 +105,46 @@
     <div class="overflow-x-auto rounded-lg">
       <div class="inline-block min-w-full align-middle">
         <div class="overflow-hidden shadow sm:rounded-lg">
-          <table id="allPartner" class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+          <table
+            id="allPartner"
+            class="min-w-full divide-y divide-gray-200 dark:divide-gray-600"
+          >
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Date Reg
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Name
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Email
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Password
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Username
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                  class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                >
                   Status
                 </th>
               </tr>
@@ -102,257 +152,389 @@
             <tbody class="bg-white dark:bg-gray-800">
               <tr>
                 <!--td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"-->
+                <td>2023-12-05 06:25:07</td>
+                <td>EDU FOREX</td>
+                <td>edu.forex@gmail.com</td>
+                <td>edu.forex@gmail.com</td>
+                <td>EDU FOREX</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <!--tr class="bg-gray-100 dark:bg-gray-700"-->
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
                 <!--td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"-->
+                <td>2023-12-05 06:25:07</td>
+                <td>EDU FOREX</td>
+                <td>edu.forex@gmail.com</td>
+                <td>edu.forex@gmail.com</td>
+                <td>EDU FOREX</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>EDU FOREX</td>
+                <td>edu.forex@gmail.com</td>
+                <td>edu.forex@gmail.com</td>
+                <td>EDU FOREX</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>EDU FOREX</td>
+                <td>edu.forex@gmail.com</td>
+                <td>edu.forex@gmail.com</td>
+                <td>EDU FOREX</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>EDU FOREX</td>
+                <td>edu.forex@gmail.com</td>
+                <td>edu.forex@gmail.com</td>
+                <td>EDU FOREX</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  edu.forex@gmail.com
-                </td>
-                <td>
-                  EDU FOREX
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
               <tr>
+                <td>2023-12-05 06:25:07</td>
+                <td>SULTAN GOLD TRADE</td>
+                <td>sgt@gmail.com</td>
+                <td>sgt@gmail.com</td>
+                <td>SULTAN GOLD TRADE</td>
                 <td>
-                  2023-12-05 06:25:07
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  sgt@gmail.com
-                </td>
-                <td>
-                  SULTAN GOLD TRADE
-                </td>
-                <td>
-                  <button type="button" id="changeActive" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                      Change Active
+                  <button
+                    type="button"
+                    id="changeActive"
+                    data-drawer-target="drawer-update-product-default"
+                    data-drawer-show="drawer-update-product-default"
+                    aria-controls="drawer-update-product-default"
+                    data-drawer-placement="right"
+                    class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Change Active
                   </button>
                 </td>
               </tr>
@@ -368,9 +550,8 @@
 <!-- javascript -->
 {% block javascripts %}
 <script>
-  $(document).ready(function() {
-      $('#allPartner').DataTable();
+  $(document).ready(function () {
+    $("#allPartner").DataTable();
   });
 </script>
 {% endblock javascripts %}
-

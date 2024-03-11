@@ -13,7 +13,7 @@ $.extend( true, DataTable.defaults, {
 
 // Default class modification
 $.extend( true, DataTable.ext.classes, {
-	container: "dt-container dt-tailwindcss",
+	container: "dt-container dt-tailwindcss overflow-x-auto rounded-lg",
 	search: {
 		input: "w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 	},
@@ -33,13 +33,14 @@ $.extend( true, DataTable.ext.classes, {
 		enabled: 'text-gray-800 hover:text-gray-900 hover:border-gray-300 hover:shadow-sm focus:ring focus:ring-gray-300 focus:ring-opacity-25 dark:hover:bg-gray-700 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-gray-200 dark:focus:ring-gray-600 dark:focus:ring-opacity-40',
 		notEnabled: 'text-gray-300 dark:text-gray-600'
 	},
-	table: 'min-w-full text-sm align-middle whitespace-nowrap',
+	//table: 'min-w-full text-sm align-middle whitespace-nowrap',
+	table: 'min-w-full divide-y',
 	thead: {
 		row: 'bg-gray-100 dark:bg-gray-700',
 		cell: 'p-3 text-sm font-bold tracking-wider text-left text-gray-900 uppercase dark:text-white'
 	},
 	tbody: {
-		row: 'even:bg-gray-700 dark:even:bg-gray-100',
+		row: 'even:bg-gray-100 dark:even:bg-gray-700',
 		cell: 'p-3 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-gray-200'
 	},
 	tfoot: {
@@ -79,7 +80,7 @@ DataTable.ext.renderer.pagingContainer.tailwindcss = function (settings, buttonE
 DataTable.ext.renderer.layout.tailwindcss = function ( settings, container, items ) {
 	var row = $( '<div/>', {
 			"class": items.full ?
-				'grid grid-cols-1 gap-4 mb-4' :
+				'grid grid-cols-1 gap-4 mb-4 inline-block min-w-full align-middle' :
 				'grid grid-cols-2 gap-4 mb-4'
 		} )
 		.appendTo( container );
@@ -89,7 +90,7 @@ DataTable.ext.renderer.layout.tailwindcss = function ( settings, container, item
 
 		// Apply start / end (left / right when ltr) margins
 		if (val.table) {
-			klass = 'col-span-2';
+			klass = 'col-span-2 overflow-hidden shadow sm:rounded-lg';
 		}
 		else if (key === 'start') {
 			klass = 'justify-self-start';

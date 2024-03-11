@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IbAccount, IbList, MibAccount
+from .models import IbAccount, IbList, MibAccount, MibList
 
 class IbListInline(admin.TabularInline):
     model = IbList
@@ -12,8 +12,13 @@ class ib_accountAdmin(admin.ModelAdmin):
 
 admin.site.register(IbAccount, ib_accountAdmin)
 
+class MibListInline(admin.TabularInline):
+    model = MibList
+    extra = 1
+
 @admin.register(MibAccount)
 class MibAccountAdmin(admin.ModelAdmin):
+    inlines = [MibListInline]
     list_display = ('user', 'is_confirm',)
     list_filter = ('is_confirm',)
     search_fields = ('user','user', 'is_confirm',)

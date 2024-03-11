@@ -85,30 +85,24 @@
           </div>
         </div>
       </div>
-  </div>
-  <div class="flex flex-col">
-    <div class="overflow-x-auto rounded-lg">
-      <div class="inline-block min-w-full align-middle">
-        <div class="overflow-hidden shadow sm:rounded-lg">            
-            {% csrf_token %}            
-            <table id="tableMembers" class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                <thead class="bg-gray-100 dark:bg-gray-700">
-                    <tr>
-                        <th>Email</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Created</th>
-                        <th>Status</th>
-                        <th>IB</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
     </div>
-  </div>
-</div>
+    <div class="flex flex-col">    
+        {% csrf_token %}            
+        <table id="tableMembers" class="divide-gray-200 dark:divide-gray-600">
+            <thead class="bg-gray-100 dark:bg-gray-700">
+                <tr>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Created</th>
+                    <th>Status</th>
+                    <th>IB</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}
 
 <!-- javascript -->
@@ -127,7 +121,7 @@
             pageLength: 10,
             order: [],
             ajax: {
-                url: "/id/api/all-users/",
+                url: "{% url 'user:get_users' %}",
 	            type: 'POST',
 				dataType: "JSON",
                 data: {                    

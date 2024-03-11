@@ -26,46 +26,149 @@
           This is a list of account member need verification
         </span>
       </div>
-    </div>
-    <div class="flex flex-col mt-6">
-      <div class="overflow-x-auto rounded-lg">
-        <div class="inline-block min-w-full align-middle">
-          <div class="overflow-hidden shadow sm:rounded-lg">            
-              <table id="tableVerification" class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                    <thead>
-                        <tr>
-                            <th>Created</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in verification %}
-                        <tr>
-                            <td>{{ user.last_updated }}</td>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.user.username }}</td>
-                            <td>{{ user.phone }}</td>
-                            <td>{{ user.city }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-              </table>
+      <div class="items-center sm:flex">
+        <div class="flex items-center mr-1">
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">                    
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18.8 4H5.2a1 1 0 0 0-.7 1.7l5.3 6 .2.7v4.8c0 .2 0 .4.2.4l3 2.3c.3.2.8 0 .8-.4v-7.1c0-.3 0-.5.2-.7l5.3-6a1 1 0 0 0-.7-1.7Z"/>
+                    </svg>
+                </div>
+                <select id="filter_by" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option value="">Search By</option>
+                    <option value="last_updated">Created</option>
+                    <option value="first_name">Name</option>
+                    <option value="city">City</option>
+                </select>
+            </div>
+        </div>       
+        <div class="flex items-center mr-3">
+            <div class="relative w-full">
+                <div class="flex">
+                    <input type="text" id="filter_value" class="rounded-none rounded-s-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 block flex-1 min-w-0 w-full text-sm p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search">
+                    <span onclick="loadDataVerify()" style="cursor: pointer;" class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </span>                    
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center">
+          <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-800 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
+            Actions
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Excel</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">CSV</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Excel</a>
+              </li>
+            </ul>
+            <div class="py-1">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Add New</a>
+            </div>
           </div>
+        </div>
       </div>
     </div>
+    <div class="flex flex-col">      
+      {% csrf_token %}            
+      <table id="tableVerification" class="divide-gray-200 dark:divide-gray-600">
+          <thead class="bg-gray-100 dark:bg-gray-700">
+                <tr>
+                    <th>Created</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--{% for user in verification %}
+                <tr>
+                    <td>{{ user.last_updated }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.city }}</td>
+                </tr>
+                {% endfor %}-->
+            </tbody>
+      </table>
 </div>
 {% endblock content %}
 
 <!-- javascript -->
 {% block javascripts %}
 <script>
-    $(document).ready(function() {
-        $('#tableVerification').DataTable();
+  $(document).ready(function() {
+    loadDataVerify();
+  });
+
+  function loadDataVerify() {
+    table = $('#tableVerification').DataTable({
+        destroy: true,
+        processing: true,
+        serverSide: true,
+        paging: true,
+        pageLength: 10,
+        order: [],
+        ajax: {
+          url: "{% url 'user:get_users_verify' %}",
+          type: 'POST',
+          dataType: "JSON",
+          data: {                    
+            filter_by: $("#filter_by").val(),
+            filter_value: $("#filter_value").val(),
+            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+          }
+        },
+        pagingType: "simple_numbers",
+        searching: false,
+        lengthChange: false,
+        columns : [
+            {
+              "data": "last_updated"
+            },
+            {
+              "data": "first_name",
+              "mRender": function(data, type, row) {
+                return row.first_name + ' ' + row.last_name;
+              }
+            },
+            {
+                "data": "email",
+                "mRender": function(data, type, row) {
+                    return `<a href="" class="text-blue-500 hover:underline">${row.email}</a>`;
+                }
+            },
+            {
+                "data": "username",
+            },
+            {
+                "data": "phone",
+            },
+            {
+                "data": "city"
+            }          
+        ]
     });
+  }
 </script>
 {% endblock javascripts %}

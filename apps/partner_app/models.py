@@ -11,9 +11,30 @@ class MibAccount(models.Model):
     def __str__(self):
         return str(self.user)
     
+
+class IbAccount(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default="")
+    account_number = models.OneToOneField(TradingAccount,on_delete=models.CASCADE)
+    is_ib = models.BooleanField(default=False)
+    is_sub_ib = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+    def save(self, *args, **kwargs):
+        if IbList.objects.filter(client_account=self.user).exists():
+            self.is_ib = False
+            self.is_sub_ib = True
+        else:
+            self.is_ib = True
+            self.is_sub_ib = False
+
+        super().save(*args, **kwargs)
+
 class MibList(models.Model):
     mib = models.ForeignKey(MibAccount, on_delete=models.CASCADE)
-    ib_account = models.OneToOneField(User, on_delete=models.CASCADE)
+    ib_account = models.OneToOneField(IbAccount, on_delete=models.CASCADE)
 
     # def clean(self):
     #     if IbAccount.objects.filter(user=self.client_account).exists():
@@ -26,27 +47,7 @@ class MibList(models.Model):
     #     super().clean()
 
     def __str__(self):
-        return str(self.ib)
-
-class IbAccount(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, default="")
-    account_number = models.OneToOneField(TradingAccount,on_delete=models.CASCADE)
-    is_ib = models.BooleanField(default=False)
-    is_sub_ib = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.name)
-
-    def save(self, *args, **kwargs):
-        if IbList.objects.filter(client_account=self.user).exists():
-            self.is_ib = False
-            self.is_sub_ib = True
-        else:
-            self.is_ib = True
-            self.is_sub_ib = False
-
-        super().save(*args, **kwargs)
+        return str(self.mib)
 
 class IbList(models.Model):
     ib = models.ForeignKey(IbAccount, on_delete=models.CASCADE)

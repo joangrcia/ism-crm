@@ -17,6 +17,5 @@ urlpatterns = i18n_patterns(
     path('notice/', include('apps.notice_app.urls')),
     path('trading/', include('apps.trading_account_app.urls')),
     path('product/', include('apps.product_app.urls')),
-    path('api/all-users/', views.all_users, name='all_users'),
     path('', include(tf_urls)),
 )

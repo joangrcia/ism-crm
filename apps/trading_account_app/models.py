@@ -1,14 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
-class ProductTrading(models.Model):
-    name = models.CharField(max_length=20)
-    leverage = models.IntegerField(default=0)
-    min_deposit = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(self.name)
+from apps.product_app.models import ProductTrading
 
 class TradingAccount(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
