@@ -1,0 +1,36 @@
+{% for product in products %}
+<div class="m-5">
+  <div class="w-[384px] h-[434px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <form class="space-y-5"
+          hx-post="{% url "product:checker" %}"
+          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+          hx-target="#resultdx"
+          hx-swap="afterbegin"
+          x-data="{enable:{{ product.is_enable|yesno:"true,false" }}}">
+
+      <input type="text" name="product_id" id="product_id" value="{{product.id}}" hidden/>
+      <div class="flex items-center gap-4 justify-between">
+        <h5 class="text-xl font-medium text-gray-900 dark:text-white">{{product.name}}</h5>
+        <input type="text" name="enables" id="enables" :value="enable" hidden/>
+        <button x-text="enable == true ? 'Enable' : 'Disable'" @click="enable = !enable" :class="enable ? 'bg-green-700 hover:bg-green-800 dark:bg-green-700 dark:hover:bg-green-800' : 'bg-zinc-500 hover:bg-zinc-600' " type="submit" class="w-fit text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-blue-800">Enable</button>
+      </div>
+      <div>
+        <label for="group" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Group</label>
+        <input type="text" name="group" id="group" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="ECN" value="{{product.name}}" required />
+      </div>
+      <div>
+        <label for="leverage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Leverage</label>
+        <input type="number" name="leverage" id="leverage" placeholder="1000" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value={{product.leverage}} required />
+      </div>
+      <div>
+        <label for="min-deposit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Minimal Deposit</label>
+        <input type="number" name="min-deposit" id="min-deposit" placeholder="500" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value={{product.min_deposit}} required />
+      </div>
+      <div class="flex gap-2">
+        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
+        <button hx-post="{% url "product:delete" %}" class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endfor %}

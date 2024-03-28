@@ -16,17 +16,17 @@
 <!-- content -->
 {% block content %}
 <div class="pt-4 pr-4 pl-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:pt-6 sm:pr-6 sm:pl-6 sm:pb-2 dark:bg-gray-800">
-    <!-- Card header -->
-    <div class="items-center justify-between lg:flex">
-      <div class="mb-4 lg:mb-0">
-        <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-          Verification Member
-        </h3>
-        <span class="text-base font-normal text-gray-500 dark:text-gray-400">
-          This is a list of account member need verification
-        </span>
-      </div>
-      <div class="items-center sm:flex">
+  <!-- Card header -->
+  <div class="items-center justify-between lg:flex">
+    <div class="mb-4 lg:mb-0">
+      <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+        Account Member
+      </h3>
+      <span class="text-base font-normal text-gray-500 dark:text-gray-400">
+        This is a list of account member
+      </span>
+    </div>
+    <div class="items-center sm:flex">
         <div class="flex items-center mr-1">
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">                    
@@ -36,9 +36,10 @@
                 </div>
                 <select id="filter_by" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     <option value="">Search By</option>
-                    <option value="last_updated">Created</option>
+                    <option value="email">Email</option>
                     <option value="first_name">Name</option>
-                    <option value="city">City</option>
+                    <option value="last_name">Surname</option>
+                    <option value="date_joined">Created</option>
                 </select>
             </div>
         </div>       
@@ -46,7 +47,7 @@
             <div class="relative w-full">
                 <div class="flex">
                     <input type="text" id="filter_value" class="rounded-none rounded-s-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 block flex-1 min-w-0 w-full text-sm p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search">
-                    <span onclick="loadDataVerify()" style="cursor: pointer;" class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                    <span onclick="loadDataUsers()" style="cursor: pointer;" class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                         </svg>
@@ -85,64 +86,54 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col">      
-      {% csrf_token %}            
-      <table id="tableVerification" class="divide-gray-200 dark:divide-gray-600">
-          <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                    <th>Created</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Phone</th>
-                    <th>City</th>
-                </tr>
+    <div class="flex flex-col">    
+        {% csrf_token %}            
+        <table id="tableMembers" class="divide-gray-200 dark:divide-gray-600">
+            <thead class="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th>Created</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Phone</th>
+                <th>City</th>
+            </tr>
             </thead>
             <tbody>
-                <!--{% for user in verification %}
-                <tr>
-                    <td>{{ user.last_updated }}</td>
-                    <td>{{ user.first_name }} {{ user.last_name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.user.username }}</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.city }}</td>
-                </tr>
-                {% endfor %}-->
             </tbody>
-      </table>
-</div>
+        </table>
+    </div>
 {% endblock content %}
 
 <!-- javascript -->
 {% block javascripts %}
 <script>
-  $(document).ready(function() {
-    loadDataVerify();
-  });
+    $(document).ready(function() {
+        loadDataUsers();
+    });
 
-  function loadDataVerify() {
-    table = $('#tableVerification').DataTable({
-        destroy: true,
-        processing: true,
-        serverSide: true,
-        paging: true,
-        pageLength: 10,
-        order: [],
-        ajax: {
-          url: "{% url 'user:get_users_verify' %}",
-          type: 'POST',
-          dataType: "JSON",
-          data: {                    
-            filter_by: $("#filter_by").val(),
-            filter_value: $("#filter_value").val(),
-            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
-          }
-        },
-        pagingType: "simple_numbers",
-        searching: false,
-        lengthChange: false,
-        columns : [
+    function loadDataUsers() {
+        table = $('#tableMembers').DataTable({
+            destroy: true,
+            processing: true,
+            serverSide: true,
+            paging: true,
+            pageLength: 10,
+            order: [],
+            ajax: {
+                url: "{% url 'user:get_users_verify' %}",
+	            type: 'POST',
+				dataType: "JSON",
+                data: {                    
+					filter_by: $("#filter_by").val(),
+					filter_value: $("#filter_value").val(),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+                }
+            },
+            pagingType: "simple_numbers",
+            searching: false,
+            lengthChange: false,
+            columns : [
             {
               "data": "last_updated"
             },
@@ -168,7 +159,7 @@
                 "data": "city"
             }          
         ]
-    });
-  }
+        });
+    }
 </script>
 {% endblock javascripts %}

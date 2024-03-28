@@ -1,0 +1,112 @@
+<!-- Table -->
+<div class="flex flex-col mt-6">
+  <div class="overflow-x-auto rounded-lg">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden shadow sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+          <thead class="bg-gray-100 dark:bg-gray-700">
+            <tr>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Date Reg</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Username</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Name</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Amount</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Account</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">To Account</th>
+              <th scope="col" class="p-4 text-xs font-bold tracking-wider text-left text-gray-500 uppercase dark:text-white">Status</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-gray-800">
+            {% for i in mib.object_list %}
+            <tr class="even:bg-zinc-100 dark:even:bg-gray-700">
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">{{i.created_at}}</td>
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">{{i.user.username}}</td>
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"><a href="" class="text-blue-500 underline">{{i.user.get_full_name}}</a></td>
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">{{i.amount}}</td>
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">{{i.from_account}}</td>
+            <td class="p-3 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">{{i.to_account}}</td>
+            <td class="p-3 space-x-2 whitespace-nowrap">
+              {% if i.status == 'Rejected' %}
+              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100 dark:border-red-400 dark:bg-gray-700 dark:text-red-400"> {{i.status}} </span>
+              {% elif i.status == 'Accepted' %}
+              <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100 dark:border-green-400 dark:bg-gray-700 dark:text-green-400"> {{i.status}} </span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card Footer -->
+<div class="flex items-center justify-between pt-3 sm:pt-6">
+  <div>
+    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+      Showing
+      <span class="font-semibold text-gray-900 dark:text-white">{{ mib.number }}</span>
+      of
+      <span class="font-semibold text-gray-900 dark:text-white">{{ mib.paginator.num_pages }}</span>
+    </span>
+  </div>
+  <div class="flex-shrink-0">
+    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0" aria-label="Table navigation">
+      <ul class="inline-flex items-stretch -space-x-px">
+        <li>
+          {% if mib.has_previous %}
+          <button hx-get="{% url "transaction:deposit_get" %}?req={{xreq}}&page={{ mib.previous_page_number }}" hx-target="#result{{xreq}}" class="btn-prev-page-active">
+            <span class="sr-only">Previous</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          {% else %}
+          <div class="btn-prev-page">
+            <span class="sr-only">Previous</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          {% endif %}
+        </li>
+        {% if mib.has_previous %}
+        <li>
+          <button hx-get="{% url "transaction:deposit_get" %}?req={{xreq}}&page=1" hx-target="#result{{xreq}}" class="btn-page-num">
+            First
+          </button>
+        </li>
+        {% endif %}
+        {% for num in mib.paginator.page_range %}
+          {% if num == mib.number %}
+            <li><div class="btn-page-num-active">{{ num }}</div></li>
+          {% elif num > mib.number|add:'-3' and num < mib.number|add:'3' %}
+            <li>
+              <button hx-get="{% url "transaction:deposit_get" %}?req={{xreq}}&page={{num}}" hx-target="#result{{xreq}}" class="btn-page-num">{{ num }}</button>
+            </li>
+          {% elif num == mib.paginator.page_range|last %}
+            <li>
+              <button hx-get="{% url "transaction:deposit_get" %}?req={{xreq}}&page={{num}}" hx-target="#result{{xreq}}" class="btn-page-num">Last</button>
+            </li>
+          {% endif %}
+        {% endfor %}
+        <li>
+          {% if mib.has_next %}
+          <button hx-get="{% url "transaction:deposit_get" %}?req={{xreq}}&page={{ mib.next_page_number }}" hx-target="#result{{xreq}}" class="btn-next-page-active">
+            <span class="sr-only">Next</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          {% else %}
+          <div class="btn-next-page">
+            <span class="sr-only">Next</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

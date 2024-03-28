@@ -152,25 +152,20 @@
                 {
                     "data": "username",
                     "mRender": function(data, type, row) {
-                        if(typeof(row.personaldetail) !== "undefined")
-                            var contentText = `Verified`;
-                        else
-                            var contentText = `Not Verified`;
-
+                        var contentText = (row.personalDetail === null) ? "Not Verified" : "Verified";
                         return contentText;
                     }
                 },
                 {
-                    "data": "username",
+                    "data": "ib_lists",
                     "mRender": function(data, type, row) {
-                        if(typeof(row.iblist) !== "undefined")
-                            var contentText = row.iblist.ib.name;
-                        else
-                            var contentText = `-`;
-
-                        return contentText;
+                        if (row.ib_lists && row.ib_lists.length > 0) {
+                            return row.ib_lists[0].ib;
+                        } else {
+                            return "-";
+                        }
                     }
-                }          
+                }       
             ]
         });
     }

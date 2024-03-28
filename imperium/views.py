@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.contrib.auth.models import User
 
 def get_breadcrumb(path):
     parts = path.strip('/').split('/')
@@ -21,8 +22,6 @@ def index(request):
 
     if request.method == 'POST':
 
-        print(request.POST)
-
         username_login = request.POST.get('username')
         password_login = request.POST.get('password')
 
@@ -34,11 +33,12 @@ def index(request):
             return redirect('dashboard:index')
         else:
             messages.info(request, "Username or password incorrect.")
-            return redirect('two_factor:login')
+            return redirect('index')
 
 
 def send_email(request):
-    return render(request, 'send_email.html')
+    all_users = User.objects.all()
+    return render(request, 'send_email.html', {'users':all_users})
 
 # Fungsi penanganan 404
 

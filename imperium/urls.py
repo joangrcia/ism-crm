@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls, name='adminpage'),
+    path("__debug__/", include("debug_toolbar.urls")),
     path('', views.index, name='login'),
     path('send_email', views.send_email, name='send_email'),
     path('dashboard/', include('apps.dashboard_app.urls')),

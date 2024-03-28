@@ -7,3 +7,7 @@ phonenumbers==8.13.30
 django-two-factor-auth==1.16.0
 django-dynamic-breadcrumbs==0.4.3
 django-htmx==1.17.3
+django-tables2==2.7.0
+django-debug-toolbar==4.3.0
+django-redis==5.4.0
+django-strip-whitespace

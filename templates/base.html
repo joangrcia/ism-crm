@@ -610,13 +610,13 @@
                         >{% trans "All" %}</a
                       >
                     </li>
-                    <li>
+                    {% comment %} <li>
                       <a
                         href="{% url "partner:wallet" %}"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                         >{% trans "Wallet" %}</a
                       >
-                    </li>
+                    </li> {% endcomment %}
                     <li>
                       <a
                         href="{% url "partner:verification" %}"
@@ -624,13 +624,13 @@
                         >{% trans "Verification" %}</a
                       >
                     </li>
-                    <li>
+                    {% comment %} <li>
                       <a
                         href="{% url "partner:request" %}"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                         >{% trans "Request" %}</a
                       >
-                    </li>
+                    </li> {% endcomment %}
                   </ul>
                 </li>
                 <li>
@@ -1069,8 +1069,10 @@
                 {% include "breadcrumbs.html" with breadcrumbs=breadcrumbs%}
             </div>
             {% endif %}
-          {% block content %}
-          {% endblock content %}
+            <div id="main">
+              {% block content %}
+              {% endblock content %}
+            </div>
         </div>
         </main>
         <footer

@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from .models import PersonalDetail,BankDetail, Wallet
-from apps.partner_app.models import IbAccount
+from apps.trading_account_app.models import TradingAccount
+from apps.partner_app.models import IbAccount, IbList
 import json
 from django.http import JsonResponse
 from django.db.models import Prefetch
@@ -14,25 +15,16 @@ def get_breadcrumb(path):
     breadcrumbs = [{'title': part.capitalize(), 'url': '/'.join(parts[:i+1])} for i, part in enumerate(parts)]
     return breadcrumbs
 
-# Create your views here.
+
 @login_required
 def index(request):
-    """
-    users = User.objects.all()
-    ib_list = IbAccount.objects.all()
-
-    context = {
-        'page_obj': users,
-        'ib_list' : ib_list,
-    }
-    """
     return render(request, 'user_app/index.html')
 
 def get_users(request):
-    start = int(request.POST.get('start'))
-    length = int(request.POST.get('length'))
-    filter_by = request.POST.get('filter_by')
-    filter_value = request.POST.get('filter_value')
+    start = int(request.POST.get('start', 0))
+    length = int(request.POST.get('length', 100))
+    filter_by = request.POST.get('filter_by', "")
+    filter_value = request.POST.get('filter_value', "")
 
     total_records = User.objects.count()
 
@@ -41,17 +33,18 @@ def get_users(request):
 
     users = User.objects.prefetch_related(
         Prefetch('personaldetail', queryset=PersonalDetail.objects.all()),
-        Prefetch('personaldetail__bankdetail',
-                 queryset=BankDetail.objects.all()),
-        Prefetch('personaldetail__wallet', queryset=Wallet.objects.all())
+        Prefetch('personaldetail__bankdetail', queryset=BankDetail.objects.all()),
+        Prefetch('personaldetail__wallet', queryset=Wallet.objects.all()),
+        Prefetch('tradingaccount_set', queryset=TradingAccount.objects.all()),
+        Prefetch('ib_lists', queryset=IbList.objects.all())  
     ).order_by('id')
 
     if filter_by and filter_value:
-        # Filter users based on filter_by field dynamically
+        
         users = users.filter(**{filter_by: filter_value})
 
-    filtered_users = users[start:start + length]  # Apply pagination using slicing
-    filtered_records = len(filtered_users)  # Count the number of filtered records after pagination
+    filtered_users = users[start:start + length]  
+    filtered_records = len(filtered_users)  
 
     if length != total_records:
         filtered_records = min(filtered_records, length)
@@ -70,8 +63,34 @@ def get_users(request):
             'email': user.email,
             'is_staff': user.is_staff,
             'is_active': user.is_active,
-            'date_joined': user.date_joined
+            'date_joined': user.date_joined,
+            'trading_accounts': [],
+            'ib_lists': []  
         }
+
+        
+        for account in user.tradingaccount_set.all():
+            trading_account_data = {
+                'account_number': account.account_number,
+                'account_deposit': account.account_deposit,
+                'dm_group': account.dm_group.id,  
+                'created_at': account.created_at,
+                'last_updated': account.last_updated
+            }
+            user_data['trading_accounts'].append(trading_account_data)
+
+        
+        try:
+            ib_list = user.ib_lists
+            if ib_list:  
+                ib_list_data = {
+                    'ib': ib_list.ib.name
+                }
+                user_data['ib_lists'] = [ib_list_data]
+            else:
+                user_data['ib_lists'] = None
+        except IbList.DoesNotExist:
+            user_data['ib_lists'] = None
 
         try:
             personal_detail = user.personaldetail
@@ -96,9 +115,11 @@ def get_users(request):
                 'bank_name': bank_detail.bank_name,
             }
         except PersonalDetail.DoesNotExist:
-            pass
+            user_data['personalDetail'] = None
+            user_data['bankDetail'] = None
 
         data.append(user_data)
+
 
     if not filter_by or not filter_value:
        filtered_records = total_records
@@ -114,14 +135,6 @@ def get_users(request):
 
 @login_required
 def verification(request):
-    """
-    verification = PersonalDetail.objects.all()
-    ib_list = IbAccount.objects.all()
-    context = {
-        'verification' : verification,
-        'ib_list':ib_list,
-    }
-    """
     return render(request, 'user_app/verification.html')
 
 def get_verification(request):
@@ -135,14 +148,14 @@ def get_verification(request):
     if length == 0:
         length = total_records
 
-    verification = PersonalDetail.objects.all()
+    verification = PersonalDetail.objects.select_related('user').all()
 
     if filter_by and filter_value:
-        # Filter users based on filter_by field dynamically
+        
         verification = verification.filter(**{filter_by: filter_value})
 
-    filtered_verify = verification[start:start + length]  # Apply pagination using slicing
-    filtered_records = len(filtered_verify)  # Count the number of filtered records after pagination
+    filtered_verify = verification[start:start + length]  
+    filtered_records = len(filtered_verify)  
 
     if length != total_records:
         filtered_records = min(filtered_records, length)

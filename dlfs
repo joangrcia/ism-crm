@@ -1,0 +1,66 @@
+* [33mabe3273[m[33m ([m[1;36mHEAD -> [m[1;32mjuan[m[33m)[m improve the product app page using htmx
+* [33me047557[m[33m ([m[1;31morigin/juan[m[33m)[m add django-htmx package, product_app UI & functionality
+* [33m4f19a1b[m adding phone numbers to the API
+*   [33m72c50f8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'arli' into 'main'
+[32m|[m[33m\[m  
+[32m|[m * [33meebabfc[m Member->verification: get data list
+[32m|[m[32m/[m  
+*   [33mfc624f2[m Merge branch 'juan' into 'main'
+[34m|[m[35m\[m  
+[34m|[m * [33mb568a07[m fixed the sub ib, ib, and mib databases. deleted the match accounts folder and replaced it with trading accounts. fixed the API filter.
+[34m|[m[34m/[m  
+*   [33mbd23bb7[m Merge branch 'arli' into 'main'
+[36m|[m[1;31m\[m  
+[36m|[m * [33m1f0066c[m get member list
+[36m|[m[36m/[m  
+*   [33m5201f9e[m Merge branch 'juan' into 'main'
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m804041e[m modified settings, view, url
+[1;32m|[m[1;32m/[m  
+*   [33m8bfc2fd[m[33m ([m[1;32mmain[m[33m)[m Merge branch 'arli' into 'main'
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m21647fe[m[33m ([m[1;31morigin/arli[m[33m)[m UI menu Send Email, Notice
+[1;34m|[m[1;34m/[m  
+*   [33m6144acb[m Merge branch 'juan' into 'main'
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33m0303bf4[m modified settings.py
+[1;36m|[m * [33m34c33e8[m Updates include modifications to Python cache files, admin, and models, along with new migrations and templates, as well as changes to existing admin, model, and template files.
+* [31m|[m   [33m5f5dfd6[m Merge branch 'arli' into 'main'
+[32m|[m[33m\[m [31m\[m  
+[32m|[m * [31m|[m [33mc7d6dce[m UI menu Partner
+[32m|[m[32m/[m [31m/[m  
+* [31m|[m [33m0b78fc0[m Merge branch 'juan' into 'main'
+[34m|[m[31m\[m[31m|[m 
+[34m|[m * [33m8df0562[m Modified admin and model files in apps/partner_app, added migrations 0001_initial.py, 0002_alter_ib_account_account_number.py, 0003_alter_ib_account_account_number.py, 0004_rename_ib_account_ibaccount.py, 0005_ibaccount_is_confirmed_referralaccount.py, 0006_iblist.py, 0007_rename_client_accoung_iblist_client_account.py, 0008_rename_user_iblist_ib.py, 0009_delete_referralaccount.py; updated models in apps/trading_account_app and imperium; added index.py; updated styles.css and base.html; added favicon.ico and _base.html in templates.
+[34m|[m[34m/[m  
+*   [33m4e70602[m Merge branch 'juan' into 'main'
+[36m|[m[1;31m\[m  
+[36m|[m * [33mf617e4a[m Modified imperium/pycache/settings.cpython-311.pyc, imperium/settings.py, and templates/base.html; added locale/*.mo files.
+[36m|[m * [33ma4909ca[m Modified imperium/pycache/settings.cpython-311.pyc, requirements.txt, templates: base.html, and index.html; added static/img/imperium-logo.png
+[36m|[m * [33mab7beef[m update requirements.txt
+[36m|[m * [33m7149c42[m Added files for match_account_app, notice_app, partner_app, social_trading_app, transaction_app, and user_app; modified files in user_app, imperium, and templates: base.html, dashboard_app/index.html.
+[36m|[m[36m/[m  
+*   [33m09eedb1[m Merge branch 'juan' into 'main'
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mfc209c3[m Deleted: ism-crm, static/css/style.css; New: static/css/dist/icons.css, static/css/dist/icons.min.css, static/css/dist/styles.css, static/css/fonts/*, static/js/app.bundle.js, static/js/datepicker.min.js, static/js/materialdesign.init.js, static/js/svgembedder.min.js, templates/base.html
+[1;32m|[m * [33m04e29ff[m add ism-crm
+[1;32m|[m *   [33m9bfabbf[m Merge branch 'juan' of https://gitlab.com/arli.0504/ism-crm into juan
+[1;32m|[m [1;34m|[m[1;35m\[m  
+[1;32m|[m [1;34m|[m * [33m3ac7ca4[m Modified views and settings in dashboard_app and imperium, added static files for admin interface, modified dashboard_app index.html, templates index.html; added theme app with templates and static files.
+[1;32m|[m * [1;35m|[m [33m8bf5246[m modified some files
+[1;32m|[m [1;35m|[m[1;35m/[m  
+* [1;35m|[m [33m87b5e1b[m Merge branch 'juan' into 'main'
+[1;36m|[m[1;35m\[m[1;35m|[m 
+[1;36m|[m * [33mc08cbff[m modified requirements.txt
+[1;36m|[m * [33m68905d7[m Update dashboard and imperium apps: modified .pyc files, views, settings; added templates (404.html, 505.html, dashboard_app/index.html); deleted dashboard_app/index.html.
+* [31m|[m [33m5978ac9[m Merge branch 'juan' into 'main'
+[32m|[m[31m\[m[31m|[m 
+[32m|[m * [33m4b71057[m Update trading and user apps with modifications to .pyc files, admin.py, migrations, and requirements.txt.
+* [33m|[m [33m73b0023[m Merge branch 'juan' into 'main'
+[34m|[m[33m\[m[33m|[m 
+[34m|[m * [33m60bec3e[m Add trading_account_app and user_app with initial setup, migrations, and views
+[34m|[m * [33m65fc5d4[m Update dashboard_app views and URLs, modify imperium settings and views, and tweak index.html template
+[34m|[m * [33m5a7aefd[m add requrements.txt
+[34m|[m[34m/[m  
+* [33m211ed58[m Initisal commit: Set up Django project structure, settings, and basic confirgurations
+* [33mf4685b0[m Initial commit
